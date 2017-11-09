@@ -15,6 +15,13 @@ service jenkins start | stop
 
 service artifactory start | stop
 
+## firewall open on local vmware
+sudo firewall-cmd --zone=public --add-port=8081/tcp --permanent
+
+sudo firewall-cmd --zone=public --add-port=8088/tcp --permanent
+
+sudo firewall-cmd --reload
+
 ## access aux apllicatifs
  jenkins
 
