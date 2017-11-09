@@ -25,18 +25,18 @@ http://srv-devops:8088
 http://srv-devops:8081
 
 # Manage Git 
-Somme cammande
+Quelques Commandes
 ```
 First 
-  704  git init
-  705  git add .
-  706  git commit -m "First commit"
-  707  git remote add origin https://github.com/jcsou/ansible-infra.git
-  708  git remote -v
-  709  git push origin master
+  git init
+  git add .
+  git commit -m "First commit"
+  git remote add origin https://github.com/jcsou/ansible-infra.git
+  git remote -v
+  git push origin master
   
 Changement : 
-  713  git add .
-  714  git commit -m "First commit"
-  715  git push origin master
+  git add .
+  git commit -m "First commit"
+  git push origin master
 ```
