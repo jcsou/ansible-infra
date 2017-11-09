@@ -22,6 +22,7 @@ sudo firewall-cmd --zone=public --add-port=8088/tcp --permanent
 
 sudo firewall-cmd --reload
 
+
 ## access aux apllicatifs
  jenkins
 
