@@ -26,7 +26,7 @@ http://srv-devops:8081
 
 # Manage Git 
 Somme cammande
-'''
+```
 First 
   704  git init
   705  git add .
@@ -39,4 +39,4 @@ Changement :
   713  git add .
   714  git commit -m "First commit"
   715  git push origin master
-'''
+```
