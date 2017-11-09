@@ -25,6 +25,7 @@ http://srv-devops:8088
 http://srv-devops:8081
 
 # Manage Git 
+'''
 >First 
 >  704  git init
 >  705  git add .
@@ -36,5 +37,5 @@ http://srv-devops:8081
 >Changement : 
 >  713  git add .
 >  714  git commit -m "First commit"
->  715  git remote add origin https://github.com/jcsou/ansible-infra.git
-
+>  715  git push origin master
+'''
