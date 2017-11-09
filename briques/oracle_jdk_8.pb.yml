@@ -1,0 +1,28 @@
+- hosts: all
+  tasks:
+    - name: Create Directory structure
+      file:
+        path: /home/downloadfolder 
+        mode: 0744
+        state: directory
+
+    - name: Download Java
+      get_url: 
+        url: http://download.oracle.com/otn-pub/java/jdk/8u151-b12/e758a0de34e24606bca991d704f6dcbf/jdk-8u151-linux-x64.rpm
+        dest: /home/downloadfolder/jdk-8u151-linux-x64.rpm 
+        headers: "Cookie:' gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie'" 
+        validate_certs: no 
+        owner: root 
+        group: root 
+        mode: 744
+
+    - name: install java rpm from a local file
+      yum:
+        name: /home/downloadfolder/jdk-8u151-linux-x64.rpm
+        state: present
+
+    - name: correct java version selected
+      alternatives:
+        name: java
+        path: /usr/java/jdk1.8.0_151/jre/bin/java
+

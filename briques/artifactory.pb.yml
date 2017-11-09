@@ -1,0 +1,35 @@
+- hosts: all
+  tasks:
+    - name: Create Directory structure
+      file:
+        path: /home/downloadfolder 
+        mode: 0744
+        state: directory
+
+    - name: Download Artifactory
+      get_url: 
+        url: https://api.bintray.com/content/jfrog/artifactory-rpms/jfrog-artifactory-oss-$latest.rpm;bt_package=jfrog-artifactory-oss-rpm 
+        dest: /home/downloadfolder/jfrog-artifactory-oss-5.5.1.rpm 
+        owner: root 
+        group: root 
+        mode: 744
+
+    - name: install artifactory rpm from a local file
+      yum:
+        name: /home/downloadfolder/jfrog-artifactory-oss-5.5.1.rpm
+        state: present
+
+    - name: start artifactory service
+      service:
+        name: artifactory
+        state: started
+
+    - name: Wait for artifactory to start
+      wait_for:
+        host: localhost
+        port: 8081
+        delay: 10
+        sleep: 5 
+        timeout: 300
+
+

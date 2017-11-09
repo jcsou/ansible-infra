@@ -1,0 +1,18 @@
+- hosts: localhost
+  tasks:
+    - name: install the latest version of subversion
+      yum:
+        name: subversion
+        state: present
+    - name: install the latest version of wget
+      yum:
+        name: wget
+        state: present
+    - name: install the latest version of net-tools
+      yum:
+        name: net-tools
+        state: present
+- import_playbook: 'briques/oracle_jdk_8.pb.yml'
+- import_playbook: 'briques/jenkins.pb.yml'
+- import_playbook: 'briques/artifactory.pb.yml'
+

@@ -1,0 +1,41 @@
+- hosts: all
+  tasks:
+    - name: Create Directory structure
+      file:
+        path: /home/downloadfolder 
+        mode: 0744
+        state: directory
+
+    - name: Download jenkins
+      get_url: 
+        url: https://pkg.jenkins.io/redhat-stable/jenkins-2.73.2-1.1.noarch.rpm
+        dest: /home/downloadfolder/jenkins-2.73.2-1.1.noarch.rpm
+        owner: root 
+        group: root 
+        mode: 744
+
+    - name: install jenkins rpm from a local file
+      yum:
+        name: /home/downloadfolder/jenkins-2.73.2-1.1.noarch.rpm
+        state: present
+
+    - name:  change port for jenkins (8088)
+      replace: 
+        dest: /etc/sysconfig/jenkins
+        regexp: 'JENKINS_PORT="(.*)"'
+        replace: 'JENKINS_PORT="8088"'
+        backup: yes
+
+    - name:  change java option ipv4 port for jenkins
+      replace:
+        dest: /etc/sysconfig/jenkins
+        regexp: 'JENKINS_JAVA_OPTIONS="(.*)"'
+        replace: 'JENKINS_JAVA_OPTIONS="-Djava.awt.headless=true -Djava.net.preferIPv4Stack=true"'
+        backup: yes
+
+    - name: start jenkins service
+      service:
+        name: jenkins
+        state: started
+
+
