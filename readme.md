@@ -8,7 +8,7 @@ yum install ansible
 ==> 2.4 --->  yum localinstall ansible-2.4.0.0-1.el7.noarch.rpm
 
 ## use ansible to install 
-
+ansible-playbook -i "localhost," -c local infradevops.yml
 
 ## manage application 
 service jenkins start | stop
