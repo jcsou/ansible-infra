@@ -1,0 +1,26 @@
+mkdir /app
+mkdir /log
+mkdir /fic
+
+groupadd diag
+useradd -d /app/diagap01 -g diag diagap01
+
+mkdir download
+cd download
+
+Avec ROOT
+yum install gcc make
+
+
+curl -o apr-1.6.3.tar.gz http://srv-devops:8081/artifactory/myLocalRepo/tools/apr-1.6.3.tar.gz
+curl -o apr-util-1.6.1.tar.gz http://srv-devops:8081/artifactory/myLocalRepo/tools/apr-util-1.6.1.tar.gz
+
+gzip -d apr-1.6.3.tar.gz
+tar -xvf apr-1.6.3.tar
+gzip -d apr-util-1.6.1.tar.gz
+tar -xvf apr-util-1.6.1.tar
+
+
+curl -o httpd-2.4.29.tar.gz http://192.168.59.128:8081/artifactory/myLocalRepo/tools/httpd-2.4.29.tar.gz
+gzip -d httpd-2.4.29.tar.gz
+tar -xvf httpd-2.4.29.tar
